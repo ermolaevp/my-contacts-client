@@ -12,7 +12,7 @@ self.__precacheManifest = [
     "url": "/my-contacts-client/static/js/runtime~main.636537ab.js"
   },
   {
-    "revision": "6f29e86d60d78efe3f087c50c1f0148c",
+    "revision": "22395c047dccc0ba707ec5052e535f48",
     "url": "/my-contacts-client/index.html"
   }
 ];
