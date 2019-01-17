@@ -1,11 +1,11 @@
 {
-  "main.js": "/my-contacts-client/static/js/main.fd1e84a1.chunk.js",
-  "main.js.map": "/my-contacts-client/static/js/main.fd1e84a1.chunk.js.map",
-  "static/js/1.9bee6b66.chunk.js": "/my-contacts-client/static/js/1.9bee6b66.chunk.js",
-  "static/js/1.9bee6b66.chunk.js.map": "/my-contacts-client/static/js/1.9bee6b66.chunk.js.map",
+  "main.js": "/my-contacts-client/static/js/main.0e35f53a.chunk.js",
+  "main.js.map": "/my-contacts-client/static/js/main.0e35f53a.chunk.js.map",
+  "static/js/1.514e8b30.chunk.js": "/my-contacts-client/static/js/1.514e8b30.chunk.js",
+  "static/js/1.514e8b30.chunk.js.map": "/my-contacts-client/static/js/1.514e8b30.chunk.js.map",
   "runtime~main.js": "/my-contacts-client/static/js/runtime~main.636537ab.js",
   "runtime~main.js.map": "/my-contacts-client/static/js/runtime~main.636537ab.js.map",
   "index.html": "/my-contacts-client/index.html",
-  "precache-manifest.ec0f91e3acd1d33f6a4cf0a51f215c14.js": "/my-contacts-client/precache-manifest.ec0f91e3acd1d33f6a4cf0a51f215c14.js",
+  "precache-manifest.cb9d446c45c5aeb64f03be4863c7b290.js": "/my-contacts-client/precache-manifest.cb9d446c45c5aeb64f03be4863c7b290.js",
   "service-worker.js": "/my-contacts-client/service-worker.js"
 }
