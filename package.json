@@ -2,7 +2,7 @@
   "name": "ringer-client",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://ermolaevp.gitlab.io/ringer-client/",
+  "homepage": "https://ermolaevp.github.io/my-contacts-client",
   "dependencies": {
     "@material-ui/core": "^3.6.1",
     "@material-ui/icons": "^3.0.1",
@@ -23,6 +23,7 @@
     "classnames": "^2.2.6",
     "es6-promise": "^4.2.5",
     "final-form": "^4.10.0",
+    "gh-pages": "^2.0.1",
     "humps": "^2.0.1",
     "jest-dom": "^2.1.1",
     "jwt-decode": "^2.2.0",
@@ -56,7 +57,9 @@
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
     "lint": "tslint -p ./",
-    "lint:fix": "yarn lint --fix"
+    "lint:fix": "yarn lint --fix",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
   },
   "husky": {
     "hooks": {

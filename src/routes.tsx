@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { HashRouter, Route, Switch } from 'react-router-dom'
 import PrivateRoute from './utils/private-route'
 
 import Login from './pages/login'
@@ -8,14 +8,14 @@ import Contacts from './pages/contacts'
 import NotFound from './pages/not-found'
 
 const Routes = () => (
-  <BrowserRouter>
+  <HashRouter>
     <Switch>
       <Route component={Login} path="/login" exact={true} />
       <Route component={Signup} path="/signup" exact={true} />
       <PrivateRoute component={Contacts} path="/" exact={true} />
       <Route component={NotFound} />
     </Switch>
-  </BrowserRouter>
+  </HashRouter>
 )
 
 export default Routes
