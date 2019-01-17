@@ -58,7 +58,7 @@
     "build-storybook": "build-storybook -s public",
     "lint": "tslint -p ./",
     "lint:fix": "yarn lint --fix",
-    "predeploy": "yarn build",
+    "predeploy": "yarn test --coverage && yarn build && mv coverage build/",
     "deploy": "gh-pages -d build"
   },
   "husky": {
