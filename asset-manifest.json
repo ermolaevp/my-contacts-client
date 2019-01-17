@@ -1,11 +1,11 @@
 {
-  "main.js": "/my-contacts-client/static/js/main.0e35f53a.chunk.js",
-  "main.js.map": "/my-contacts-client/static/js/main.0e35f53a.chunk.js.map",
+  "main.js": "/my-contacts-client/static/js/main.45d9cf79.chunk.js",
+  "main.js.map": "/my-contacts-client/static/js/main.45d9cf79.chunk.js.map",
   "static/js/1.514e8b30.chunk.js": "/my-contacts-client/static/js/1.514e8b30.chunk.js",
   "static/js/1.514e8b30.chunk.js.map": "/my-contacts-client/static/js/1.514e8b30.chunk.js.map",
   "runtime~main.js": "/my-contacts-client/static/js/runtime~main.636537ab.js",
   "runtime~main.js.map": "/my-contacts-client/static/js/runtime~main.636537ab.js.map",
   "index.html": "/my-contacts-client/index.html",
-  "precache-manifest.21529bc7f28f0635ef2e0e2eae856d18.js": "/my-contacts-client/precache-manifest.21529bc7f28f0635ef2e0e2eae856d18.js",
+  "precache-manifest.fa0bf05692ce763867d9c87afb98f6e1.js": "/my-contacts-client/precache-manifest.fa0bf05692ce763867d9c87afb98f6e1.js",
   "service-worker.js": "/my-contacts-client/service-worker.js"
 }

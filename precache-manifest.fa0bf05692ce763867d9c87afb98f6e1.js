@@ -1,7 +1,7 @@
 self.__precacheManifest = [
   {
-    "revision": "0e35f53aeea26f88d2c3",
-    "url": "/my-contacts-client/static/js/main.0e35f53a.chunk.js"
+    "revision": "45d9cf79c1226b6ab944",
+    "url": "/my-contacts-client/static/js/main.45d9cf79.chunk.js"
   },
   {
     "revision": "514e8b30b129e74ee6c7",
@@ -12,7 +12,7 @@ self.__precacheManifest = [
     "url": "/my-contacts-client/static/js/runtime~main.636537ab.js"
   },
   {
-    "revision": "22395c047dccc0ba707ec5052e535f48",
+    "revision": "1b58cdf107c4a02b2aaf60b1dcc65188",
     "url": "/my-contacts-client/index.html"
   }
 ];
