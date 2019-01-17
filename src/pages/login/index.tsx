@@ -37,7 +37,7 @@ interface IProps {
 const Login = ({ classes }: IProps) => {
   const handleLogin = (handleSubmit: any) => (values: object) =>
     handleSubmit(values).then(() => {
-      window.location.href = '/'
+      window.location.href = '#/'
     })
   return (
     <Grid
