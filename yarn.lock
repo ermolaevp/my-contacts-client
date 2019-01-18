@@ -2966,6 +2966,11 @@ clone-deep@^2.0.1:
     kind-of "^6.0.0"
     shallow-clone "^1.0.0"
 
+clone@~0.1.11:
+  version "0.1.19"
+  resolved "https://registry.yarnpkg.com/clone/-/clone-0.1.19.tgz#613fb68639b26a494ac53253e15b1a6bd88ada85"
+  integrity sha1-YT+2hjmyaklKxTJT4Vsaa9iK2oU=
+
 co@^4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/co/-/co-4.6.0.tgz#6ea6bdf3d853ae54ccb8e47bfa0bf3f9031fb184"
@@ -3033,7 +3038,7 @@ commander@2.17.x, commander@~2.17.1:
   version "2.17.1"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.17.1.tgz#bd77ab7de6de94205ceacc72f1716d29f20a77bf"
 
-commander@^2.11.0, commander@^2.12.1, commander@^2.14.1, commander@^2.18.0, commander@^2.19.0, commander@^2.9.0:
+commander@^2.11.0, commander@^2.12.1, commander@^2.14.1, commander@^2.18.0, commander@^2.19.0, commander@^2.8.1, commander@^2.9.0:
   version "2.19.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.19.0.tgz#f6198aa84e5b83c46054b94ddedbfed5ee9ff12a"
 
@@ -6045,6 +6050,14 @@ jest-config@^23.6.0:
     jest-validate "^23.6.0"
     micromatch "^2.3.11"
     pretty-format "^23.6.0"
+
+jest-coverage-shield@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/jest-coverage-shield/-/jest-coverage-shield-1.1.2.tgz#5a494db576b7ba01ffa5d1c4df8ff041ae42e1a5"
+  integrity sha512-inwcrWuRJMI29PeHQoSjhi+qps4t7//WtidqHHrmQbLO9ar96XHSp0UD7qZ5mN+ibJcqYo1LRGDw+7libabRpw==
+  dependencies:
+    commander "^2.8.1"
+    xml-splitter "~1.2.1"
 
 jest-diff@^23.6.0:
   version "23.6.0"
@@ -9390,6 +9403,11 @@ sax@^1.2.4, sax@~1.2.4:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
 
+sax@~0.5.5:
+  version "0.5.8"
+  resolved "https://registry.yarnpkg.com/sax/-/sax-0.5.8.tgz#d472db228eb331c2506b0e8c15524adb939d12c1"
+  integrity sha1-1HLbIo6zMcJQaw6MFVJK25OdEsE=
+
 saxes@^3.1.3:
   version "3.1.3"
   resolved "https://registry.yarnpkg.com/saxes/-/saxes-3.1.3.tgz#334ab3b802a465ccda96fff9bdefbd505546ffa8"
@@ -11010,6 +11028,14 @@ ws@^6.1.0:
 xml-name-validator@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/xml-name-validator/-/xml-name-validator-3.0.0.tgz#6ae73e06de4d8c6e47f9fb181f78d648ad457c6a"
+
+xml-splitter@~1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/xml-splitter/-/xml-splitter-1.2.1.tgz#b3fd28c88063e510ab6a35ed0943292409c4c812"
+  integrity sha1-s/0oyIBj5RCrajXtCUMpJAnEyBI=
+  dependencies:
+    clone "~0.1.11"
+    sax "~0.5.5"
 
 xmlchars@^1.3.1:
   version "1.3.1"

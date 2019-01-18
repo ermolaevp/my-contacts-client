@@ -25,6 +25,7 @@
     "final-form": "^4.10.0",
     "gh-pages": "^2.0.1",
     "humps": "^2.0.1",
+    "jest-coverage-shield": "^1.1.2",
     "jest-dom": "^2.1.1",
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.11",
@@ -58,6 +59,7 @@
     "build-storybook": "build-storybook -s public",
     "lint": "tslint -p ./",
     "lint:fix": "yarn lint --fix",
+    "shield": "coverage-shield",
     "predeploy": "yarn test --coverage && yarn build && mv coverage build/",
     "deploy": "gh-pages -d build"
   },
