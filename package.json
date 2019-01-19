@@ -1,8 +1,11 @@
 {
-  "name": "ringer-client",
+  "name": "my-contacts-client",
   "version": "0.1.0",
   "private": true,
   "homepage": "https://ermolaevp.github.io/my-contacts-client",
+  "repository": {
+    "url": "https://github.com/ermolaevp/my-contacts-client"
+  },
   "dependencies": {
     "@material-ui/core": "^3.6.1",
     "@material-ui/icons": "^3.0.1",
@@ -21,6 +24,7 @@
     "@types/seamless-immutable": "^7.1.4",
     "chai": "^4.2.0",
     "classnames": "^2.2.6",
+    "coveralls": "^3.0.2",
     "es6-promise": "^4.2.5",
     "final-form": "^4.10.0",
     "gh-pages": "^2.0.1",
@@ -59,7 +63,7 @@
     "build-storybook": "build-storybook -s public",
     "lint": "tslint -p ./",
     "lint:fix": "yarn lint --fix",
-    "shield": "coverage-shield",
+    "coverage": "yarn test --coverage --coverageReporters=text-lcov | coveralls",
     "predeploy": "yarn test --coverage && yarn build && mv coverage build/",
     "deploy": "gh-pages -d build"
   },
