@@ -45,6 +45,10 @@ export const contactsSetFilter = (values: any) => ({
 })
 
 export const CONTACT_SEND_UPDATE = 'contact/send/update'
+export const contactSendUpdate = (payload: object) => ({
+  type: CONTACT_SEND_UPDATE,
+  payload,
+})
 
 export const CONTACT_UPDATE = 'contact/update'
 export const contactUpdate = (payload: object) => ({
@@ -59,8 +63,14 @@ export const contactUpdateError = (error: any) => ({
 })
 
 export const CONTACT_SEND_ADD = 'contact/send/add'
+export const contactSendAdd = (payload: object) => ({
+  type: CONTACT_SEND_ADD,
+  payload,
+})
+
 export const CONTACT_ADD = 'contact/add'
 export const contactAdd = (payload: object) => ({
+  test: console.log('action', payload),
   type: CONTACT_ADD,
   payload,
 })

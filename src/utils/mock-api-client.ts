@@ -25,13 +25,21 @@ export const mock: { [index: string]: any } = {
       },
     },
   },
-  '/users/{id}/contacts': {
+  '/users/{user_id}/contacts': {
     get: {
       body: [{ id: 1, number: '+111' }, { id: 2, number: '+222' }],
       meta: {},
     },
+    post: {
+      body: {},
+    },
+  },
+  '/users/{user_id}/contacts/{id}': {
+    put: { body: {} },
   },
 }
+
+export const mockError: { [index: string]: any } = {}
 
 export const mockResponse = ({
   pathName,
@@ -40,7 +48,25 @@ export const mockResponse = ({
   pathName: string
   method: string
 }) => {
+  if (typeof mock[pathName] === 'undefined') {
+    throw new Error(`No mock response for pathName: ${pathName}`)
+  }
+  if (typeof mock[pathName][method] === 'undefined') {
+    throw new Error(
+      `No mock response for pathName: ${pathName} method: ${method}`,
+    )
+  }
   return mock[pathName][method]
+}
+
+export const mockErrorResponse = ({
+  pathName,
+  method,
+}: {
+  pathName: string
+  method: string
+}) => {
+  return mockError[pathName][method]
 }
 
 export const apiClient = {

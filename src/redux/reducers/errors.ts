@@ -1,19 +1,18 @@
 import createReducer from '../../utils/create-reducer'
-import { ERROR_ADD, ERROR_CLEAR } from '../actions/errors'
+import { API_ERROR, API_ERROR_CLEAR } from '../actions/errors'
 
 const initalState = {
-  key: undefined,
   status: undefined,
   statusText: undefined,
 }
 
-const errorAdd = (state: any, { payload }: any) => state.merge(payload)
+const apiError = (state: any, { payload }: any) => state.merge(payload)
 
-const errorClear = (state: any) => state.merge(initalState)
+const apiErrorClear = (state: any) => state.merge(initalState)
 
 const handlers = {
-  [ERROR_ADD]: errorAdd,
-  [ERROR_CLEAR]: errorClear,
+  [API_ERROR]: apiError,
+  [API_ERROR_CLEAR]: apiErrorClear,
 }
 
 export default createReducer(initalState, handlers)

@@ -8,12 +8,21 @@ import cx from 'classnames'
 const ContactForm = (formId: string) => ({
   handleSubmit,
   submitSucceeded,
+  submitError,
+  submitting,
 }: FormRenderProps) => (
-  <form onSubmit={handleSubmit} className={cx({ submitSucceeded })} id={formId}>
+  <form
+    onSubmit={handleSubmit}
+    className={cx({ submitSucceeded })}
+    id={formId}
+    data-testid="contact-form"
+  >
+    {submitError}
     <ErrorField name="error" />
     <div>
       <Field
         name="name"
+        id="name"
         label="Name"
         component={TextField}
         fullWidth={true}
@@ -24,6 +33,7 @@ const ContactForm = (formId: string) => ({
     <div>
       <Field
         name="number"
+        id="number"
         label="Number"
         component={TextField}
         fullWidth={true}
@@ -34,6 +44,7 @@ const ContactForm = (formId: string) => ({
     <div>
       <Field
         name="email"
+        id="email"
         label="Email"
         type="email"
         component={TextField}
@@ -42,6 +53,15 @@ const ContactForm = (formId: string) => ({
       />
       <ErrorField name="email" />
     </div>
+    <button
+      type="submit"
+      role="submit"
+      value="submit"
+      disabled={submitting}
+      data-testid="contact-form-submit"
+    >
+      Submit
+    </button>
   </form>
 )
 

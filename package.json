@@ -64,7 +64,7 @@
     "lint": "tslint -p ./",
     "lint:fix": "yarn lint --fix",
     "coverage": "yarn test --coverage --coverageReporters=text-lcov | coveralls",
-    "predeploy": "yarn test --coverage && yarn build && mv coverage build/",
+    "predeploy": "yarn test && yarn build",
     "deploy": "gh-pages -d build"
   },
   "husky": {

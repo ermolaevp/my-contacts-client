@@ -3,7 +3,7 @@ import { createStructuredSelector } from 'reselect'
 import { user, appError } from '../../selectors'
 import { connect } from 'react-redux'
 import { sessionLogout } from '../../redux/actions/session'
-import { errorClear } from '../../redux/actions/errors'
+import { apiErrorClear } from '../../redux/actions/errors'
 import { Button, AppBar, Toolbar, Typography } from '@material-ui/core'
 import { withStyles } from '@material-ui/core/styles'
 import styles from './styles'
@@ -19,14 +19,14 @@ const selectors = createStructuredSelector({
 
 const mapDispatch = {
   sessionLogout,
-  errorClear,
+  apiErrorClear,
 }
 
 interface IProps {
   user: any
   appError: any
   sessionLogout: () => void
-  errorClear: () => void
+  apiErrorClear: () => void
   classes: any
   children: any
 }
@@ -53,7 +53,7 @@ const MainLayout = (props: IProps) => {
         }}
         open={!!props.appError.key}
         autoHideDuration={6000}
-        onClose={props.errorClear}
+        onClose={props.apiErrorClear}
         ContentProps={{
           'aria-describedby': 'app-error',
         }}
@@ -68,7 +68,7 @@ const MainLayout = (props: IProps) => {
             aria-label="Close"
             color="inherit"
             className={props.classes.close}
-            onClick={props.errorClear}
+            onClick={props.apiErrorClear}
           >
             <CloseIcon />
           </IconButton>,

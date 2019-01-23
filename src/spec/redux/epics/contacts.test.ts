@@ -35,7 +35,7 @@ describe('Contacts Epics', () => {
 
     testScheduler.run(({ hot, cold, expectObservable }) => {
       const response = mockResponse({
-        pathName: '/users/{id}/contacts',
+        pathName: '/users/{user_id}/contacts',
         method: 'get',
       })
 
@@ -59,6 +59,37 @@ describe('Contacts Epics', () => {
           type: actions.CONTACTS_UPDATE,
           payload: { items: response.body, meta: response.meta },
         },
+      })
+    })
+  })
+  it('dispatches contactUpdate action', () => {
+    const testScheduler = new TestScheduler((actual, expected) => {
+      assertDeepEqual(actual, expected, true)
+    })
+
+    testScheduler.run(({ hot, cold, expectObservable }) => {
+      const response = mockResponse({
+        pathName: '/users/{user_id}/contacts/{id}',
+        method: 'put',
+      })
+
+      const action$ = hot('-a', {
+        a: actions.contactSendAdd({}),
+      })
+
+      const dependencies = {
+        apiClient: {
+          execute: () =>
+            cold('--a', {
+              a: response,
+            }),
+        },
+      }
+
+      const output$ = epics.contactSendAddEpic(action$, state$, dependencies)
+
+      expectObservable(output$).toBe('---a', {
+        a: actions.contactAdd({}),
       })
     })
   })

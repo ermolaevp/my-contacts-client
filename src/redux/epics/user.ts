@@ -1,15 +1,9 @@
 import { ofType, combineEpics } from 'redux-observable'
 import { map, mergeMap, catchError } from 'rxjs/operators'
 import { from, of } from 'rxjs'
-import {
-  USER_SIGNUP,
-  USER_SIGNUP_ERROR,
-  USER_FETCH,
-  USER_FETCH_ERROR,
-  userUpdate,
-} from '../actions/user'
+import { USER_SIGNUP, USER_FETCH, userUpdate } from '../actions/user'
 import { sessionLogin } from '../actions/session'
-import { errorAdd } from '../actions/errors'
+import { apiError, formError } from '../actions/errors'
 
 export const useFetchEpic = (action$: any, state$: any, { apiClient }: any) =>
   action$.pipe(
@@ -23,7 +17,7 @@ export const useFetchEpic = (action$: any, state$: any, { apiClient }: any) =>
         }),
       ).pipe(
         map((response: any) => userUpdate(response.body)),
-        catchError(error => of(errorAdd(USER_FETCH_ERROR, error))),
+        catchError(error => of(apiError(error))),
       ),
     ),
   )
@@ -44,7 +38,7 @@ export const userSignupEpic = (action$: any, state$: any, { apiClient }: any) =>
         }),
       ).pipe(
         map(() => sessionLogin(payload)),
-        catchError(error => of(errorAdd(USER_SIGNUP_ERROR, error))),
+        catchError(error => of(apiError(error), formError(error))),
       ),
     ),
   )

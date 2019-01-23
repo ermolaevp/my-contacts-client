@@ -9,11 +9,16 @@ import MakeAsyncFunction from 'react-redux-promise-listener'
 import { Form } from 'react-final-form'
 import Button from '@material-ui/core/Button'
 import { promiseListener } from '../../../redux/configureStore'
-import {
-  CONTACT_SEND_ADD,
-  CONTACT_ADD,
-  CONTACT_ADD_ERROR,
-} from '../../../redux/actions/contacts'
+import { CONTACT_SEND_ADD, CONTACT_ADD } from '../../../redux/actions/contacts'
+import { FORM_ERROR } from '../../../redux/actions/errors'
+
+const validate = (values: any) => {
+  const errors: any = {}
+  if (!values.number) {
+    errors.number = 'Required'
+  }
+  return errors
+}
 
 interface IProps {
   open: boolean
@@ -31,6 +36,7 @@ const ContactAddModal = ({ open, onClose }: IProps) => {
       aria-labelledby="form-dialog-title"
       maxWidth="sm"
       fullWidth={true}
+      data-testid="contact-add-dialog"
     >
       <DialogTitle id="form-dialog-title">Add contact</DialogTitle>
       <DialogContent>
@@ -39,12 +45,13 @@ const ContactAddModal = ({ open, onClose }: IProps) => {
           listener={promiseListener}
           start={CONTACT_SEND_ADD}
           resolve={CONTACT_ADD}
-          reject={CONTACT_ADD_ERROR}
+          reject={FORM_ERROR}
         >
           {(handleSubmit: any) => (
             <Form
               render={ContactForm(formId)}
               onSubmit={contactHandleSubmit(handleSubmit)}
+              validate={validate}
             />
           )}
         </MakeAsyncFunction>
@@ -53,7 +60,7 @@ const ContactAddModal = ({ open, onClose }: IProps) => {
         <Button onClick={onClose} color="primary">
           Cancel
         </Button>
-        <Button type="submit" form={formId} color="primary">
+        <Button type="submit" form={formId} color="primary" role="submit">
           Add
         </Button>
       </DialogActions>

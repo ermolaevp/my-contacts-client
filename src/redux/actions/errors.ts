@@ -1,20 +1,37 @@
-export const ERROR_ADD = 'error/add'
-export const errorAdd = (key: string, error: any) => {
-  const { response } = error
-  return typeof response.body === 'undefined'
-    ? {
-        type: ERROR_ADD,
-        payload: {
-          key,
-          status: response.status,
-          statusText: response.statusText,
-        },
-      }
-    : {
-        type: key,
-        payload: response.body.errors ? response.body.errors : response.body,
-      }
+import { FORM_ERROR as FINAL_FORM_ERROR } from 'final-form'
+
+export const FORM_ERROR = 'form_error'
+export const formError = (responseBody: any) => {
+  const { error, errors } = responseBody
+  const resp = {
+    type: FORM_ERROR,
+    payload: {},
+  }
+  if (error) {
+    resp.payload = { [FINAL_FORM_ERROR]: error }
+  }
+  if (errors) {
+    resp.payload = errors
+  }
+  return resp
 }
 
-export const ERROR_CLEAR = 'error/clear'
-export const errorClear = () => ({ type: ERROR_CLEAR })
+export const FORM_ERROR_CLEAR = 'form_error/clear'
+export const formErrorClear = () => ({ type: FORM_ERROR_CLEAR })
+
+export const API_ERROR = 'api_error'
+export const apiError = (response: any) => {
+  const { status, statusText } = response
+  return {
+    type: API_ERROR,
+    payload: {
+      status,
+      statusText,
+    },
+  }
+}
+
+export const API_ERROR_CLEAR = 'api_error/clear'
+export const apiErrorClear = () => ({
+  type: API_ERROR_CLEAR,
+})

@@ -66,7 +66,7 @@ class ApiClient {
       return req
     }
 
-    const request = SwaggerClient.buildRequest({
+    const requestParams: any = {
       spec: this.spec,
       operationId,
       parameters,
@@ -77,7 +77,13 @@ class ApiClient {
       requestInterceptor,
       http,
       ...extras,
-    })
+    }
+
+    if (process.env.NODE_ENV === 'development') {
+      requestParams.scheme = 'http'
+    }
+
+    const request = SwaggerClient.buildRequest(requestParams)
 
     if (
       request.body &&

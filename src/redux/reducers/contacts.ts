@@ -75,6 +75,7 @@ const contactUpdate = (state: any, { payload }: IAction) => {
 }
 
 const contactAdd = (state: any, { payload }: IAction) => {
+  console.log('reducer', payload)
   return state.merge({ items: [payload] }, { deep: true })
 }
 

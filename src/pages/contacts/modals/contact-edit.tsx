@@ -57,7 +57,7 @@ const ContactEditModal = ({ open, onClose, currentContact }: IProps) => {
         <Button onClick={onClose} color="primary">
           Cancel
         </Button>
-        <Button type="submit" form={formId} color="primary">
+        <Button type="submit" form={formId} color="primary" role="submit">
           Save
         </Button>
       </DialogActions>

@@ -6,12 +6,11 @@ import { TOKEN_COOKIE_NAME } from '../../constants'
 import {
   SESSION_LOGOUT,
   sessionAuthorize,
-  SESSION_LOGIN_ERROR,
   SESSION_LOGIN,
   SESSION_AUTHORIZE,
 } from '../actions/session'
 import { userClear, userFetch } from '../actions/user'
-import { errorAdd } from '../actions/errors'
+import { apiError, formError } from '../actions/errors'
 
 export const sessionLoginEpic = (
   action$: any,
@@ -33,7 +32,7 @@ export const sessionLoginEpic = (
         }),
       ).pipe(
         map((response: any) => sessionAuthorize(response.body.token)),
-        catchError(error => of(errorAdd(SESSION_LOGIN_ERROR, error))),
+        catchError(error => of(apiError(error), formError(error))),
       ),
     ),
   )

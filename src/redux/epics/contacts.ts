@@ -3,8 +3,6 @@ import toPairs from 'lodash/toPairs'
 import flatten from 'lodash/flatten'
 import {
   map,
-  mapTo,
-  filter,
   debounce,
   mergeMap,
   withLatestFrom,
@@ -21,13 +19,11 @@ import {
   CONTACT_SEND_UPDATE,
   CONTACT_SEND_ADD,
   CONTACT_SEND_DELETE,
-  CONTACT_UPDATE_ERROR,
   contactUpdate,
   contactAdd,
-  CONTACT_ADD_ERROR,
   contactDelete,
 } from '../actions/contacts'
-import { errorAdd } from '../actions/errors'
+import { formError, apiError } from '../actions/errors'
 import { user } from '../../selectors'
 
 export const contactsFetchEpic = (
@@ -59,7 +55,7 @@ export const contactsFetchEpic = (
         }),
       ).pipe(
         map((response: any) => contactsUpdate(response.body, response.meta)),
-        catchError(error => of(errorAdd(CONTACTS_FETCH, error))),
+        catchError(error => of(apiError(error))),
       ),
     ),
   )
@@ -85,7 +81,7 @@ export const contactSendUpdateEpic = (
         }),
       ).pipe(
         map((response: any) => contactUpdate(response.body)),
-        catchError(error => of(errorAdd(CONTACT_UPDATE_ERROR, error))),
+        catchError(error => of(formError(error), apiError(error))),
       ),
     ),
   )
@@ -110,7 +106,9 @@ export const contactSendAddEpic = (
         }),
       ).pipe(
         map((response: any) => contactAdd(response.body)),
-        catchError(error => of(errorAdd(CONTACT_ADD_ERROR, error))),
+        catchError(error =>
+          of(formError(error.response.body), apiError(error.response)),
+        ),
       ),
     ),
   )
@@ -135,7 +133,7 @@ export const contactSendDeleteEpic = (
         }),
       ).pipe(
         map(() => contactDelete(payload.id)),
-        catchError(error => of(errorAdd(CONTACT_SEND_DELETE, error))),
+        catchError(error => of(formError(error), apiError(error))),
       ),
     ),
   )
