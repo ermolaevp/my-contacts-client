@@ -70,7 +70,6 @@ export const contactSendAdd = (payload: object) => ({
 
 export const CONTACT_ADD = 'contact/add'
 export const contactAdd = (payload: object) => ({
-  test: console.log('action', payload),
   type: CONTACT_ADD,
   payload,
 })

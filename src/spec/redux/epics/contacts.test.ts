@@ -64,7 +64,7 @@ describe('Contacts Epics', () => {
   })
   it('dispatches contactUpdate action', () => {
     const testScheduler = new TestScheduler((actual, expected) => {
-      assertDeepEqual(actual, expected, true)
+      assertDeepEqual(actual, expected, false)
     })
 
     testScheduler.run(({ hot, cold, expectObservable }) => {

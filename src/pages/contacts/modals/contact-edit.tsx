@@ -1,19 +1,13 @@
-import * as React from 'react'
+import React from 'react'
 import Dialog from '@material-ui/core/Dialog'
-import DialogActions from '@material-ui/core/DialogActions'
 import DialogContent from '@material-ui/core/DialogContent'
-import DialogContentText from '@material-ui/core/DialogContentText'
 import DialogTitle from '@material-ui/core/DialogTitle'
-import MakeAsyncFunction from 'react-redux-promise-listener'
-import { Form } from 'react-final-form'
-import Button from '@material-ui/core/Button'
-import { promiseListener } from '../../../redux/configureStore'
 import ContactForm from '../contact-form'
 import {
   CONTACT_SEND_UPDATE,
   CONTACT_UPDATE,
-  CONTACT_UPDATE_ERROR,
 } from '../../../redux/actions/contacts'
+import { FORM_ERROR } from '../../../redux/actions/errors'
 
 interface IProps {
   open: boolean
@@ -22,9 +16,6 @@ interface IProps {
 }
 
 const ContactEditModal = ({ open, onClose, currentContact }: IProps) => {
-  const contactHandleSubmit = (handleSubmit: any) => (values: object) =>
-    handleSubmit(values).then(() => onClose())
-  const formId = 'contact-edit-form'
   return (
     <Dialog
       open={open}
@@ -35,32 +26,14 @@ const ContactEditModal = ({ open, onClose, currentContact }: IProps) => {
     >
       <DialogTitle id="form-dialog-title">Edit contact</DialogTitle>
       <DialogContent>
-        {/* <DialogContentText>
-          Edit contact
-        </DialogContentText> */}
-        <MakeAsyncFunction
-          listener={promiseListener}
-          start={CONTACT_SEND_UPDATE}
-          resolve={CONTACT_UPDATE}
-          reject={CONTACT_UPDATE_ERROR}
-        >
-          {(handleSubmit: any) => (
-            <Form
-              render={ContactForm(formId)}
-              onSubmit={contactHandleSubmit(handleSubmit)}
-              initialValues={currentContact}
-            />
-          )}
-        </MakeAsyncFunction>
+        <ContactForm
+          startActionType={CONTACT_SEND_UPDATE}
+          resolveActionType={CONTACT_UPDATE}
+          rejectActionType={FORM_ERROR}
+          onSuccess={onClose}
+          initialValues={currentContact}
+        />
       </DialogContent>
-      <DialogActions>
-        <Button onClick={onClose} color="primary">
-          Cancel
-        </Button>
-        <Button type="submit" form={formId} color="primary" role="submit">
-          Save
-        </Button>
-      </DialogActions>
     </Dialog>
   )
 }
