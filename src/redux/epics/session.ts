@@ -32,7 +32,9 @@ export const sessionLoginEpic = (
         }),
       ).pipe(
         map((response: any) => sessionAuthorize(response.body.token)),
-        catchError(error => of(apiError(error), formError(error))),
+        catchError(error =>
+          of(formError(error.response.body), apiError(error.response)),
+        ),
       ),
     ),
   )

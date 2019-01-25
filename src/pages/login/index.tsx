@@ -1,10 +1,6 @@
-import * as React from 'react'
-import { Form } from 'react-final-form'
-import {
-  SESSION_LOGIN,
-  SESSION_AUTHORIZE,
-  SESSION_LOGIN_ERROR,
-} from '../../redux/actions/session'
+import React from 'react'
+import { SESSION_LOGIN, SESSION_AUTHORIZE } from '../../redux/actions/session'
+import { FORM_ERROR } from '../../redux/actions/errors'
 import {
   Grid,
   Paper,
@@ -15,8 +11,6 @@ import {
 import LoginForm from './login-form'
 import compose from '../../utils/compose'
 import { Link } from 'react-router-dom'
-import { promiseListener } from '../../redux/configureStore'
-import MakeAsyncFunction from 'react-redux-promise-listener'
 import styles from './styles'
 
 const validate = ({ email, password }: any) => {
@@ -35,10 +29,8 @@ interface IProps {
 }
 
 const Login = ({ classes }: IProps) => {
-  const handleLogin = (handleSubmit: any) => (values: object) =>
-    handleSubmit(values).then(() => {
-      window.location.href = '#/'
-    })
+  const homeRedirect = () => (window.location.href = '#/')
+  const onError = (err: any) => console.log(err)
   return (
     <Grid
       container={true}
@@ -59,20 +51,13 @@ const Login = ({ classes }: IProps) => {
             <br />
             password
           </DialogContentText>
-          <MakeAsyncFunction
-            listener={promiseListener}
-            start={SESSION_LOGIN}
-            resolve={SESSION_AUTHORIZE}
-            reject={SESSION_LOGIN_ERROR}
-          >
-            {(handleSubmit: any) => (
-              <Form
-                render={LoginForm(classes)}
-                onSubmit={handleLogin(handleSubmit)}
-                validate={validate}
-              />
-            )}
-          </MakeAsyncFunction>
+          <LoginForm
+            startActionType={SESSION_LOGIN}
+            resolveActionType={SESSION_AUTHORIZE}
+            rejectActionType={FORM_ERROR}
+            onSuccess={homeRedirect}
+            onError={onError}
+          />
         </Paper>
       </Grid>
     </Grid>

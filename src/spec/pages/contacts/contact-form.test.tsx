@@ -55,7 +55,6 @@ describe('Contacts forms', () => {
   })
   it('update contact success', async () => {
     const mockOnSuccess = jest.fn()
-    const mockOnError = jest.fn()
     const initalValues = {
       name: 'Jon',
       number: '123',
@@ -69,7 +68,6 @@ describe('Contacts forms', () => {
     } = renderWithRedux(
       <ContactForm
         onSuccess={mockOnSuccess}
-        onError={mockOnError}
         initalValues={initalValues}
         startActionType={CONTACT_SEND_UPDATE}
         resolveActionType={CONTACT_UPDATE}
@@ -87,6 +85,5 @@ describe('Contacts forms', () => {
       })
     })
     assert.equal(1, mockOnSuccess.mock.calls.length)
-    assert.equal(0, mockOnError.mock.calls.length)
   })
 })

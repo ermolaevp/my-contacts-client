@@ -1,8 +1,7 @@
 import React from 'react'
-import { Field, Form, FormProps } from 'react-final-form'
+import { FormRenderProps, Field, Form, FormProps } from 'react-final-form'
 import TextField from '../../components/ui/input/text-field'
 import ErrorField from '../../components/ui/input/error-field'
-import { FormRenderProps } from 'react-final-form'
 import cx from 'classnames'
 import Button from '@material-ui/core/Button'
 import withAsyncForm from '../../utils/with-async-form'
@@ -13,16 +12,9 @@ interface IProps {
   onError?: () => void
 }
 
-const ContactForm = ({
-  onSubmit,
-  onSuccess,
-  onError,
-  ...rest
-}: IProps & FormProps) => {
+const ContactForm = ({ onSubmit, onSuccess, ...rest }: IProps & FormProps) => {
   const handleFormSubmit = (values: object) =>
-    onSubmit(values)
-      .then(() => onSuccess && onSuccess())
-      .catch(() => onError && onError())
+    onSubmit(values).then(() => onSuccess && onSuccess())
   return (
     <Form {...rest} onSubmit={handleFormSubmit}>
       {({
