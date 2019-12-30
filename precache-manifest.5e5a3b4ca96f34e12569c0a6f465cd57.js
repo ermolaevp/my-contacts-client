@@ -8,11 +8,11 @@ self.__precacheManifest = [
     "url": "/my-contacts-client/static/js/main.5e7000b0.chunk.js"
   },
   {
-    "revision": "d7ad7f858beac311bbd5",
-    "url": "/my-contacts-client/static/js/1.d7ad7f85.chunk.js"
+    "revision": "40846deccde24114d1a3",
+    "url": "/my-contacts-client/static/js/1.40846dec.chunk.js"
   },
   {
-    "revision": "e6993282081882064ce42cd6954f777a",
+    "revision": "366e59d086becc76445a8e527fdc40a7",
     "url": "/my-contacts-client/index.html"
   }
 ];
