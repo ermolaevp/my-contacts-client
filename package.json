@@ -35,7 +35,7 @@
     "lodash": "^4.17.13",
     "pluralize": "^7.0.0",
     "portable-fetch": "^3.0.0",
-    "qs": "^6.6.0",
+    "qs": "^6.6.1",
     "react": "^16.7.0-alpha",
     "react-dom": "^16.7.0-alpha",
     "react-final-form": "^3.6.7",
